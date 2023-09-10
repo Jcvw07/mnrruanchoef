@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Jc MNR Ruan </title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            background-color: #f2f2f2;
+        }
+        #cookie-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+        }
+        #cookie {
+            width: 200px;
+            height: 200px;
+            background-image: url('mnr.jpg'); /* Replace 'your_cookie_image.jpg' with your custom image path */
+            background-size: cover;
+            cursor: pointer;
+            transition: transform 0.1s ease-in-out;
+        }
+        #cookie:hover {
+            transform: scale(1.1);
+        }
+        #score {
+            font-size: 24px;
+            margin-top: 20px;
+        }
+        #upgrade-button {
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            margin-top: 20px;
+            cursor: pointer;
+        }
+        #upgrade-button:hover {
+            background-color: #45a049;
+        }
+    </style>
+</head>
+<body bgcolor="black text="white">
+    <div id="cookie-container">
+        <h1>Gee MNR n trek</h1>
+        <p>Choef?</p>
+        <div id="cookie"></div>
+        <p>Score: <span id="score">0</span></p>
+        <button id="upgrade-button">Vat nog n langer pull(Cost: 10)</button>
+    </div>
+
+    <script>
+        const cookie = document.getElementById("cookie");
+        const scoreDisplay = document.getElementById("score");
+        const upgradeButton = document.getElementById("upgrade-button");
+        let score = 0;
+        let clickValue = 1;
+        let upgradeCost = 10;
+
+        cookie.addEventListener("click", () => {
+            score += clickValue;
+            scoreDisplay.textContent = score;
+        });
+
+        upgradeButton.addEventListener("click", () => {
+            if (score >= upgradeCost) {
+                score -= upgradeCost;
+                clickValue += 1;
+                scoreDisplay.textContent = score;
+                upgradeCost *= 2;
+                upgradeButton.textContent = `Upgrade Click Value (Cost: ${upgradeCost})`;
+            }
+        });
+    </script>
+</body>
+</html>
